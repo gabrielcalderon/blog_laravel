@@ -8,14 +8,12 @@ use Tests\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * A basic test example.
-     *
-     * @return void
+     * @test
      */
-    public function testBasicTest()
+    public function BasicTest()
     {
-        $response = $this->get('/');
+        $this->get('/')
+            ->assertStatus(200);
 
-        $response->assertStatus(200);
     }
 }

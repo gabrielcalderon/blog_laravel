@@ -14,5 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
+
+// Rutas para los administradores
+Route::prefix('admin')->name('admin.')->group(function () {
+  Route::resource('users', 'AdminUsersController');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
