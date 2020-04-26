@@ -5,19 +5,19 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Role;
-use App\Image;
+use App\Profile;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-
+		use Notifiable;
+	
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','imagen'
+        'name', 'email', 'password', 'imagen'
     ];
 
     /**
@@ -38,21 +38,28 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role(){
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
 
-    public function image(){
-        return $this->belongsTo(Image::class);
-    }
+    public function is_admin()
+    {
 
-
-    public function is_admin(){
-
-        if ($this->role->id === 2 )
+        if ($this->role->id === 2)
             return true;
         else
             return false;
     }
 
+  	public function profile(){
+     	 	return $this->hasOne(Profile::class);
+		}
+		
+		public function createProfile($image){
+			$this->profile()->create([
+				'user_id' => $this,
+				'image_id' => $image->id,
+			]);
+		}
 }

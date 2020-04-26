@@ -21,7 +21,17 @@ Route::get('/', function () {
 Route::prefix('admin')->name('admin.')->group(function () {
   Route::resource('users', 'AdminUsersController');
 });
+Route::prefix('user')->group(function (){
+		Route::resource('account','ProfileController')
+					->parameters([
+						'account' => 'profile'
+					])
+					->except(['index','create','store']);
+});
+
+Route::resource('auth.posts','PostController')
+  ->except(['index','show']);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController')->name('home');

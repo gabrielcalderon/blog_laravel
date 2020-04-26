@@ -23,11 +23,8 @@ class CreateUsersTable extends Migration
                     ->default(1)
                     ->constrained();
             $table->rememberToken();
-            $table->foreignId('image_id')
-                    ->nullable()
-                    ->constrained();
             $table->timestamps();
-            $table->index(['email','role_id','name','image_id']);
+            $table->index(['email','role_id','name']);
         });
     }
     /**
