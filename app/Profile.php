@@ -15,6 +15,13 @@ class Profile extends Model
 			'image_id'
 		];
 
+		protected $casts = [
+			'direccion'=>'string',
+			'historial'=>'text',
+			'user_id'=>'integer',
+			'image_id' => 'integer',
+		];
+
     public function user()
     {
       return $this->belongsTo(User::class);

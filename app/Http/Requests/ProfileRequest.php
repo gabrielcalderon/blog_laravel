@@ -14,6 +14,7 @@ class ProfileRequest extends FormRequest
     public function authorize()
     {
         return true;
+
     }
 
     /**

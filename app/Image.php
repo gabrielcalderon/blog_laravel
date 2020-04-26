@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Profile;
+use App\{Profile, Post};
 
 class Image extends Model
 {
@@ -18,5 +18,10 @@ class Image extends Model
     public function profile(){
         return $this->hasOne(Profile::class);
 		}
-		
+
+		public function post()
+		{
+			return $this->hasOne(Post::class);
+		}
+			
 }

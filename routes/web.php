@@ -13,25 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
+Route::get('/','IndexController');
 
 // Rutas para los administradores
 Route::prefix('admin')->name('admin.')->group(function () {
-  Route::resource('users', 'AdminUsersController');
-});
-Route::prefix('user')->group(function (){
-		Route::resource('account','ProfileController')
-					->parameters([
-						'account' => 'profile'
-					])
-					->except(['index','create','store']);
+	Route::resource('users', 'AdminUsersController');
 });
 
-Route::resource('auth.posts','PostController')
-  ->except(['index','show']);
+// Route for User registrados
+Route::prefix('user')->group(function () {
+	Route::resource('account', 'ProfileController')
+		->parameters([
+			'account' => 'profile'
+		])
+		->except(['index', 'create', 'store']);
+});
+
+// Routes for Posts created for User(Auth)
+Route::resource('auth.posts', 'PostController')
+	->except(['index']);
+
 
 Auth::routes();
-
 Route::get('/home', 'HomeController')->name('home');

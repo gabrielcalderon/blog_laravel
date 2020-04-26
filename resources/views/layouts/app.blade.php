@@ -70,7 +70,7 @@
 					<li class="nav-item dropdown">
 						<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 							@if(Auth::user()->profile->image->ruta)
-								<img class="img-current_user" src="{{ asset('images/'.Auth::user()->profile->image->ruta) }}" alt="">
+								<img class="img-current_user" src="{{ asset('images/accounts/'.Auth::user()->profile->image->ruta) }}" alt="">
 							@endif						
               {{ Auth::user()->name }} <span class="caret"></span>
 						</a>

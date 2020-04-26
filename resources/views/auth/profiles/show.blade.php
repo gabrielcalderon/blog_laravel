@@ -4,7 +4,9 @@
 <div class="card p-2">
 		<div class="col-sm-10">
 			<div class="card-img">
-				<img class="card-img img-account img-thumbnail" src="{{ asset('images/'.$profile->image->ruta) }}">
+				@if ($profile->image->ruta !== "default.jpg")
+					<img class="card-img img-account img-thumbnail" src="{{ asset('images/accounts/'.$profile->image->ruta) }}">
+				@endif
 			</div>
 			<div class="card-title">
 				<h5>{{ $profile->user->name }}</h5>
@@ -14,10 +16,13 @@
 </div>
 
 @auth
+	@if (auth()->user()->id === $profile->user_id)
 	<div class="btn-group-sm">
 		<div class="btn-group-toggle">
 			<a href="{{ route('account.edit', $profile) }}" class="btn btn-outline-info btn-sm mt-2">Editar mi Perfil</a>
 		</div>
 	</div>
+	@endif
 @endauth
+
 @endsection
