@@ -6,8 +6,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+		<link href="{{ asset('icon/laravel.ico') }}" rel="shortcut icon" type="image/ico">
 
-    <title>Application|@yield('title','Home') </title>
+    <title>Application | @yield('title','Home') </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery.min.js') }}" defer></script>
@@ -17,11 +18,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/account.css') }}" rel="stylesheet">
-		<link href="{{ asset('icon/laravel.ico') }}" rel="shortcut icon" type="image/ico">
+		<link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-body">
 <div id="app">
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light bg-navbar shadow-sm sticky-top">
 	<div class="container">
 		<a class="navbar-brand" href="{{ url('/') }}">
 				{{ config('app.name', 'Laravel') }}
@@ -39,15 +40,15 @@
         </li>
 				@endauth
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">API</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
+            Más Información
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Sobre Nosotros..</a>
+            <a class="dropdown-item" href="#">Contáctanos</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
@@ -59,11 +60,11 @@
 					<!-- Authentication Links -->
 				@guest
 						<li class="nav-item">
-								<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+								<a class="nav-link fg-navbar-color" href="{{ route('login') }}">{{ __('Login') }}</a>
 						</li>
 						@if (Route::has('register'))
-								<li class="nav-item">
-										<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+								<li class="nav-item fg-navbar-color">
+										<a class="nav-link " href="{{ route('register') }}">{{ __('Register') }}</a>
 								</li>
 						@endif
 				@else
@@ -88,8 +89,6 @@
 									onclick="event.preventDefault();document.getElementById('logout-form').submit();">
 									{{ __('Logout') }}
 							</a>
-
-
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 									@csrf
 							</form>
@@ -103,13 +102,13 @@
 
 	<main role="main" class="container pt-4">
 		<div class="row">
-			<div class="col col-md-8">
+			<div class="col-md-8">
 				@include('layouts.flash-message')
 				@yield('content')
 			</div>
-			<div class="col col-md-4">
+			<div class="col-md-4">
 			@section('sidebar')
-				<div class="list-group">
+				<div class="list-group toggle">
 					<button type="button" class="list-group-item list-group-item-action active">
 						Cras justo odio
 					</button>

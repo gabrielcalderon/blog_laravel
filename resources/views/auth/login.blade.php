@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title','Log In')
 @section('content')
 <div class="row justify-content-center">
 	<div class="card w-100">
