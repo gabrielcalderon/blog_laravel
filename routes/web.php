@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','IndexController');
+Route::get('/','IndexController')
+    ->name('index');
 
 // Rutas para los administradores
 Route::prefix('admin')->name('admin.')->group(function () {
 	Route::resource('users', 'AdminUsersController');
+	Route::get('/dashboard', 'AdminUsersController@dashboard')->name('dashboard');
 });
 
 // Route for User registrados

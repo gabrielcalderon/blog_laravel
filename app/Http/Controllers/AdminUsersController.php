@@ -15,6 +15,10 @@ class AdminUsersController extends Controller
         $this->middleware('admin');
     }
 
+		public function dashboard(){
+			return view('admin.dashboard.dashboard');
+		}
+
     /**
      * Display a listing of the resource.
      *

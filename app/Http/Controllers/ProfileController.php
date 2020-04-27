@@ -13,7 +13,6 @@ class ProfileController extends Controller
 	public function __construct()
 	{
 		$this->middleware('auth');
-		$this->middleware('edit_account')->only(['edit', 'update', 'destroy']);
 	}
 	/**
 	 * Display the specified resource.
