@@ -27,12 +27,15 @@ Route::prefix('user')->group(function () {
 	Route::resource('account', 'ProfileController')
 		->parameters([
 			'account' => 'profile'
-		])
+		  ])
 		->except(['index', 'create', 'store']);
 });
 
 // Routes for Posts created for User(Auth)
 Route::resource('auth.posts', 'PostController')
+  ->parameters([
+      'auth' => 'slug'
+    ])
 	->except(['index']);
 
 

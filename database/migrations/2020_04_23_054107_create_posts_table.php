@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
 									->nullable();
 						$table->foreignId('user_id')
 									->constrained();
+            $table->unsignedInteger('visits')->default(0);
 						$table->timestamps();
 						$table->index(['title','image_id']);
         });

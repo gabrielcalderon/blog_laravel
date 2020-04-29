@@ -31,10 +31,14 @@
 										</span>
 										@enderror
 									</div>
-									{{-- <div class="col-sm-6">
-												<input type="text" class="form-control form-control-user" id="exampleLastName"
-													placeholder="Last Name">
-											</div> --}}
+									<div class="col-sm-6">
+										<input type="text" required autofocus name="surname" class="form-control form-control-user" id="exampleLastName" placeholder="Apellido">
+										@error('surname')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+										@enderror
+									</div>
 								</div>
 								<div class="form-group">
 									<input class="form-control form-control-user" id="exampleInputEmail" type="email" name="email"
@@ -49,10 +53,10 @@
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input class="form-control form-control-user" id="exampleInputPassword" type="password"
-											name="password_confirmation" required autocomplete="new-password" placeholder="Password">
+											name="password_confirmation" required autocomplete="new-password" placeholder="Contraseña">
 									</div>
 									<div class="col-sm-6">
-										<input id="password" placeholder="Repeat Password" type="password"
+										<input id="password" placeholder="Verifica tu Contraseña" type="password"
 											class="form-control form-control-user" id="exampleRepeatPassword" name="password" required
 											autocomplete="new-password">
 										@error('password')

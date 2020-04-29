@@ -13,6 +13,9 @@
 			<p class="card-text small">{{ $profile->historial }}</p>
 		</div>
 		@auth
+		<div class="btn-group-sm m-3">
+			<a href="{{ route('auth.posts.create',Auth::user()->get_slug_snake()) }}" class="btn btn-outline-info small">Crear Post</a>
+		</div>
 		@if (auth()->user()->id === $profile->user_id)
 		<div class="btn-group-sm m-3">
 			<a href="{{ route('account.edit', $profile) }}" class="btn small text-gray-800 border-bottom">Editar mi Perfil</a>

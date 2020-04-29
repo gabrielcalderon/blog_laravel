@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use App\{Role, Profile, Post};
 
 class User extends Authenticatable
@@ -16,7 +17,10 @@ class User extends Authenticatable
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'email', 'password', 'imagen'
+				'name',
+				'email',
+				'surname',
+				'password',
 	];
 
 	/**
@@ -35,6 +39,8 @@ class User extends Authenticatable
 	 */
 	protected $casts = [
 		'email_verified_at' => 'datetime',
+		'surname' => 'string',
+		'name' => 'string'
 	];
 
 	public function role()
@@ -68,5 +74,10 @@ class User extends Authenticatable
 			'user_id' => $this,
 			'image_id' => $image->id,
 		]);
+	}
+
+	public function get_slug_snake(){
+		$slug = Str::snake($this->name.' '.$this->surname);
+		return $slug;
 	}
 }

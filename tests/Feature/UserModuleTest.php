@@ -8,6 +8,7 @@ use Tests\TestCase;
 use Illuminate\Http\Request;
 use App\Http\Middleware\AdminMiddleware;
 use App\{User, Role, Image, Profile};
+use Illuminate\Support\Facades\Auth;
 
 class UserModuleTest extends TestCase
 {
@@ -132,7 +133,6 @@ class UserModuleTest extends TestCase
   *@test
   */
   function it_update_the_profile_user_in_account(){
-
   }
 
 }

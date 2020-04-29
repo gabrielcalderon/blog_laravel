@@ -44,8 +44,8 @@
 							<td>{{ $user->role->name }}</td>
 							<td>{{ $user->created_at }}</td>
 							<td class="small" colspan="2">
-								<a class="btn-outline-info btn-sm" href="#">Editar</a>
-								<a class="btn-danger btn-sm" href="#">Eliminar</a>
+								<a class="btn-sm btn-outline-info " href="#">Editar</a>
+								<a class="btn-sm btn-danger " href="#">Eliminar</a>
 							</td>
 						</tr>
 						@empty
